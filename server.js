@@ -8,6 +8,7 @@ const app = express();
 const receipe = require('./model/receipe');
 
 
+
 const port = 5000;
 
 mongoose.connect("mongodb://127.0.0.1:27017/receipe")
@@ -19,10 +20,19 @@ app.post('/api/endpoint', (req, res) => {
     console.log(req.body);
     const newReceipe = new receipe(req.body)
     newReceipe.save().then(()=>{
-    res.write('success')
+
+    r
     }).catch(()=>{
     console.log(err)
   })
+  });
+
+
+ 
+
+  app.get("/recepie/get", async (req, res) => {
+    const data = await receipe.find();
+    res.json(data);
   });
   
   app.listen(port, () => {
