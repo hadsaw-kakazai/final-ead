@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import Nav from '../Nav'
 import Axios from 'axios'
+import ViewReceipe from './ViewReceipe';
 
 export default function AddRecepie() {
 
@@ -14,8 +15,11 @@ export default function AddRecepie() {
     })
 
 
-    
+    const [formSubmit,setFormSubmit] = useState(false)
 
+
+    
+let result =[]
    async function handleSubmit(event){
         event.preventDefault()
         Axios.post(`http://localhost:${port}/api/endpoint`, formData)
@@ -26,6 +30,12 @@ export default function AddRecepie() {
         console.error(error);
       });
 
+      fetch("http://localhost:5000/recepie/get").then((response) => response.json().then((json)=>{
+        result = json
+        console.log(result)
+       }))
+
+       setFormSubmit(true)
     }
 
 
@@ -41,7 +51,9 @@ export default function AddRecepie() {
 
   return (
     <div>
-    <Nav/>
+      {formSubmit?
+      <>
+      <Nav/>
       <form onSubmit={(event)=>{handleSubmit(event)}} > 
       <input type="text" placeholder ="Enter Recepie Title" value={formData.title} name='title' onChange={(event)=>handleChange(event)} required={true}/><br/>
       <input type="text" placeholder ="Enter Recepie Description" value={formData.description} name='description' onChange={(event)=>handleChange(event)} required={true}/><br/>
@@ -51,6 +63,11 @@ export default function AddRecepie() {
       {/* <input type="file" placeholder ="Enter Recepie Image" onChange={()=>{}}/><br/> */}
       <button type='submit'>Add Recepie</button>
       </form>
+      
+      </>
+      :
+      <ViewReceipe result={result} setFormSubmit={setFormSubmit}/>}
+    
     </div>
   )
 }

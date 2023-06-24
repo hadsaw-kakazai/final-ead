@@ -7,7 +7,7 @@ export default function Nav() {
   return (
     <div>
 
-        <nav>
+        {/* <nav>
         <ul>
           <li>
             <Link to="/">Add Recepie</Link>
@@ -19,7 +19,7 @@ export default function Nav() {
         </ul>
       </nav>
 
-      <Outlet />
+      <Outlet /> */}
     </div>
   )
 }
