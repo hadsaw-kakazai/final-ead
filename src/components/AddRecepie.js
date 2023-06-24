@@ -9,7 +9,7 @@ export default function AddRecepie() {
         description: '',
         ingredients: '',
         instructions: '',
-        image: ''
+       
     })
 
 
@@ -26,7 +26,7 @@ export default function AddRecepie() {
             return {...prevData,[event.target.name]:event.target.value}
         })
 
-        console.log(formData)
+     
        
     }
 
