@@ -4,7 +4,7 @@ import Axios from 'axios'
 
 export default function AddRecepie() {
 
-    const port = 3000;
+  const port = 5000;
     const [formData,setFormData] = useState({
         title: '',
         description: '',
@@ -16,7 +16,7 @@ export default function AddRecepie() {
 
     
 
-    function handleSubmit(event){
+   async function handleSubmit(event){
         event.preventDefault()
         Axios.post(`http://localhost:${port}/api/endpoint`, formData)
       .then((response) => {
@@ -25,6 +25,7 @@ export default function AddRecepie() {
       .catch((error) => {
         console.error(error);
       });
+
     }
 
 
@@ -41,7 +42,7 @@ export default function AddRecepie() {
   return (
     <div>
     <Nav/>
-      <form action="" method="POST" onSubmit={(event)=>{handleSubmit(event)}} > 
+      <form onSubmit={(event)=>{handleSubmit(event)}} > 
       <input type="text" placeholder ="Enter Recepie Title" value={formData.title} name='title' onChange={(event)=>handleChange(event)} required={true}/><br/>
       <input type="text" placeholder ="Enter Recepie Description" value={formData.description} name='description' onChange={(event)=>handleChange(event)} required={true}/><br/>
       <input type="text" placeholder ="Enter Recepie Ingrdients" value={formData.ingredients} name='ingredients' onChange={(event)=>handleChange(event)} required={true}/><br/>

@@ -11,6 +11,7 @@
     "cros": "^1.0.1",
     "ejs": "^3.1.9",
     "express": "^4.18.2",
+    "http-proxy-middleware": "^2.0.6",
     "mongoose": "^7.3.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -21,7 +22,8 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "proxy": "http://localhost:4000"
   },
   "eslintConfig": {
     "extends": [
@@ -44,4 +46,6 @@
   "devDependencies": {
     "react-router-dom": "^6.14.0"
   }
+
+ 
 }
