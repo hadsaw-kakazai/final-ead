@@ -17,6 +17,8 @@ export default function ViewReceipe({result}) {
         return(
           <div key={data.id}>
             <h1>{data.title}</h1>
+            <h3>{data.description}</h3>
+            <h3>{data.ingredients}</h3>
           </div>
         )}
       )}

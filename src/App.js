@@ -4,9 +4,10 @@ import AddRecepie from './components/AddRecepie';
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import ViewReceipe from './components/ViewReceipe'
 import NoPage from './components/NoPage'
-import Nav from './Nav';
+import Nav from './Nav';import React, { useState } from 'react'
 
 function App() {
+  const [result,setResult] = useState([])
   return (
     
     <>
@@ -14,8 +15,8 @@ function App() {
 <BrowserRouter>
       <Routes>
         <Route path="/" element={<Nav />}>
-          <Route index element={<AddRecepie />} />
-          <Route path="ViewReceipe" element={<ViewReceipe />} />
+          <Route index element={<AddRecepie result={result} setResult={setResult}  />} />
+          <Route path="ViewReceipe" element={<ViewReceipe result={result}/>} />
           
           <Route path="*" element={<NoPage />} />
         </Route>

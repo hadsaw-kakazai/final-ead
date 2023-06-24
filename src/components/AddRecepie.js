@@ -3,7 +3,7 @@ import Nav from '../Nav'
 import Axios from 'axios'
 import ViewReceipe from './ViewReceipe';
 
-export default function AddRecepie() {
+export default function AddRecepie({result,setResult}) {
 
   const port = 5000;
     const [formData,setFormData] = useState({
@@ -19,7 +19,7 @@ export default function AddRecepie() {
 
 
     
-let result =[]
+
 //handle submit event
    async function handleSubmit(event){
         event.preventDefault()
@@ -34,8 +34,9 @@ let result =[]
 
       //feteching data from API
       fetch("http://localhost:5000/recepie/get").then((response) => response.json().then((json)=>{
-        result = json
+        let result = json
         console.log(result)
+        setResult(result)
        }))
 
      
