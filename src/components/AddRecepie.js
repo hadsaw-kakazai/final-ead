@@ -1,9 +1,10 @@
 import React, { useState } from 'react'
 import Nav from '../Nav'
-
+import Axios from 'axios'
 
 export default function AddRecepie() {
 
+    const port = 3000;
     const [formData,setFormData] = useState({
         title: '',
         description: '',
@@ -17,7 +18,13 @@ export default function AddRecepie() {
 
     function handleSubmit(event){
         event.preventDefault()
-        
+        Axios.post(`http://localhost:${port}/api/endpoint`, formData)
+      .then((response) => {
+        console.log(response.data);
+      })
+      .catch((error) => {
+        console.error(error);
+      });
     }
 
 

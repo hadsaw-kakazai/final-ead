@@ -9,5 +9,5 @@ const receipeSchema = new mongoose.Schema({
 });
 
 const receipe = mongoose.model('receipe', receipeSchema);
-module.exports = User;
+module.exports = receipe;
 
