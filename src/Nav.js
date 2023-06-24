@@ -2,24 +2,23 @@ import React from 'react'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import AddRecepie from './components/AddRecepie'
 import ViewReceipe from './components/ViewReceipe'
-import {Link,Outlet} from'react-router-dom'
+import {NavLink,Outlet} from'react-router-dom'
 export default function Nav() {
   return (
     <div>
-
-        {/* <nav>
+<nav>
         <ul>
           <li>
-            <Link to="/">Add Recepie</Link>
-          </li>
-          <li>
-            <Link to="/viewreceipe">View Recepie</Link>
+            <NavLink to="/">AddRecepie</NavLink>
           </li>
          
+       
+          <li>
+            <NavLink to="ViewReceipe">Recepie</NavLink>
+          </li>
         </ul>
       </nav>
-
-      <Outlet /> */}
+      <Outlet />
     </div>
   )
 }

@@ -4,19 +4,24 @@ import AddRecepie from './components/AddRecepie';
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import ViewReceipe from './components/ViewReceipe'
 import NoPage from './components/NoPage'
+import Nav from './Nav';
 
 function App() {
   return (
     
     <>
-      <BrowserRouter>
+
+<BrowserRouter>
       <Routes>
-        <Route path="/" element={<AddRecepie />}>
-        <Route path="ViewReceipe" element={<ViewReceipe />} />
-        <Route path="*" element={<NoPage />} />
+        <Route path="/" element={<Nav />}>
+          <Route index element={<AddRecepie />} />
+          <Route path="ViewReceipe" element={<ViewReceipe />} />
+          
+          <Route path="*" element={<NoPage />} />
         </Route>
       </Routes>
     </BrowserRouter>
+     
  
     </>
   );

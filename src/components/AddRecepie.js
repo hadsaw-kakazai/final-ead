@@ -15,11 +15,12 @@ export default function AddRecepie() {
     })
 
 
-    const [formSubmit,setFormSubmit] = useState(false)
+    // const [formSubmit,setFormSubmit] = useState(false)
 
 
     
 let result =[]
+//handle submit event
    async function handleSubmit(event){
         event.preventDefault()
         Axios.post(`http://localhost:${port}/api/endpoint`, formData)
@@ -30,12 +31,14 @@ let result =[]
         console.error(error);
       });
 
+
+      //feteching data from API
       fetch("http://localhost:5000/recepie/get").then((response) => response.json().then((json)=>{
         result = json
         console.log(result)
        }))
 
-       setFormSubmit(true)
+     
     }
 
 
@@ -51,8 +54,8 @@ let result =[]
 
   return (
     <div>
-      {formSubmit?
-      <>
+      
+      
       <Nav/>
       <form onSubmit={(event)=>{handleSubmit(event)}} > 
       <input type="text" placeholder ="Enter Recepie Title" value={formData.title} name='title' onChange={(event)=>handleChange(event)} required={true}/><br/>
@@ -64,9 +67,7 @@ let result =[]
       <button type='submit'>Add Recepie</button>
       </form>
       
-      </>
-      :
-      <ViewReceipe result={result} setFormSubmit={setFormSubmit}/>}
+     
     
     </div>
   )
