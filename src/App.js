@@ -1,19 +1,23 @@
 import logo from './logo.svg';
 import './App.css';
 import AddRecepie from './components/AddRecepie';
-import { Router,Route,Routes } from 'react-router-dom'
+import { BrowserRouter,Route,Routes } from 'react-router-dom'
 import ViewReceipe from './components/ViewReceipe'
+import NoPage from './components/NoPage'
 
 function App() {
   return (
     
     <>
-          <Router>
+      <BrowserRouter>
       <Routes>
-      
+        <Route path="/" element={<AddRecepie />}>
+        <Route path="ViewReceipe" element={<ViewReceipe />} />
+        <Route path="*" element={<NoPage />} />
+        </Route>
       </Routes>
-      </Router>
-    <AddRecepie/>
+    </BrowserRouter>
+ 
     </>
   );
 }
